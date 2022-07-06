@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -8,16 +9,26 @@
  *
  *    */
 
-void print_alphabet(void)
+void print_alphabet()
 
 {
 
-	char i;
+	char a;
 
-	for (i = 'a'; i <= 'z'; i++)
+	for (a = 'a'; a <= 'z'; a++)
 
-		_putchar(i);
+		putchar(a);
 
-	_putchar('\n');
+	putchar('\n');
+
+}
+
+int main(void)
+
+{
+
+	    print_alphabet();
+
+	        return (0);
 
 }
