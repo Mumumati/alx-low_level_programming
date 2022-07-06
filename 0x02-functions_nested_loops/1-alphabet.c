@@ -1,17 +1,23 @@
 #include "main.h"
-#include <stdio.h>
-void print_alphabet ();
-{
-	int a
-		for (a='A';a<=Z;a++);
-		{
-			putchar(toLower(a));
-	
-		}
-	{
-	int main (void);
-	}
-	print_alphabet();
-	return 0;
-}
 
+/**
+ *
+ *  * print_alphabet - Prints alphabet in lowercase
+ *
+ *   * Return: Nothing
+ *
+ *    */
+
+void print_alphabet(void)
+
+{
+
+	char i;
+
+	for (i = 'a'; i <= 'z'; i++)
+
+		_putchar(i);
+
+	_putchar('\n');
+
+}
