@@ -1,26 +1,18 @@
-#include <stdio.h>
+#include "main.h"
+
+/**
+ * swap_int - swaps integers with pointers.
+ * @a: is pointer to an int.
+ * @b: is pointer to an int.
+ * Return: Always 0.
+ */
 
 void swap_int(int *a, int *b)
-{
-	int tempnum;
 
-	tempnum = *a;
+{
+	int temp;
+
+	temp = *a;
 	 *a = *b;
-	 *b = tempnum;
+	 *b = temp;
 }
-int main(void)
-{
-	int x1 = 9, x2 = 10;
-
-	printf("Before swapping:");
-	printf("\nValue of x1 is: %d", x1);
-	printf("\nValue of x2 is: %d", x2);
-
-	/*calling swap function*/
-	 swap_int(&x1, &x2);
-
-	 printf("\nAfter swapping:");
-	 printf("\nValue of x1 is: %d", x1);
-	 printf("\nValue of x2 is: %d", x2);
-}
-
