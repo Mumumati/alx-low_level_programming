@@ -2,30 +2,41 @@
 
 /**
  * _strncat -  concatenates two strings
- * @dest: A pointer to an char that will be updated
- * @src: A pointer to an char that will be updated
- * @n: value
+ * using at most n bytes from src
+ * @dest: input value
+ * @src: input value
+ * @n: input value
  * Return: dest
  */
 
 char *_strncat(char *dest, char *src, int n)
 {
-	int i, j;
+int i;
+int j;
 
-	i = 0;
-	while (dest[i] != '\0') /*WHILE count character */
-	{
-		i++;
-	}
+i = 0;
 
-	j = 0;
-	while (j < n && src[j] != '\0') /*WHILE concatenate dest with src*/
-	{
-		dest[i] = src[j];
-		j++;  /*sum j*/
-		i++; /**sum i*/
-	}
-	dest[i] = '\0'; /*the terminating null byte*/
+while (dest[i] != '\0')
+{
+i++;
 
-	return (dest);
 }
+
+j = 0;
+
+while (j < n && src[j] != '\0')
+
+{
+
+dest[i] = src[j];
+i++;
+j++;
+
+}
+
+dest[i] = '\0';
+return (dest);
+
+}
+
+ 
