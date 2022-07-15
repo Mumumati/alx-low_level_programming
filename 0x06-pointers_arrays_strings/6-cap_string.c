@@ -1,59 +1,109 @@
 #include "main.h"
+
+int is_sep(char c);
+
+char cap_char(char c);
+
 /**
- * separator - checks if character is a seperator
- * @c: character to be checked
- * Return: if seperator return 1. Otherwise return 0;
+ * cap_string - capitalizes all words of a string
+ * @str: string whose words to capitalize
+ * Description:
+ * Separators of words: space, tabulation, new line,
+ * ,, ;, ., !, ?, ", (, ), {, and }
+ * Return: pointer to str whose words have been capitalized
  */
 
-int separator(char c)
-{
-	/*Delcaring condition switch*/
-	switch (c)
-	{
-		case ' ':
-		case '\t':
-		case '\n':
-		case ',':
-		case ';':
-		case '.':
-		case '!':
-		case '?':
-		case '"':
-		case '(':
-		case ')':
-		case '{':
-		case '}':
-			return (1);
-		default:
-			return (0);
-	}
-}
-/**
- * cap_string - capitalizes chars after given deliminators
- * @s: string to uppercase
- * Return: returns modified string
- */
-char *cap_string(char *s)
-{
-	int count, upper;
+char *cap_string(char *str)
 
-	upper = -32; /*value constant 32*/
+{
 
-	count = 0;
-	/*Start WHILE*/
-	while (s[count] != '\0')
+	int i;
+
+	int sep_prev = 0;
+
+	for (i = 0; str[i] != '\0'; i++)
+
 	{
-		/*letters lowercase*/
-		if (s[count] >= 'a' && s[count] <= 'z')
+
+		/* check if the current charater is a separator */
+
+		if (is_sep(str[i]))
+
 		{
-			/*Convert uppercase*/
-			if (s[count] == *s || separator(s[count - 1]))
 
-				s[count] += upper;
+			sep_prev = 1;
+
 		}
-		count++; /*Add count*/
+
+		/* check if the previous character was a separator */
+
+		else if (sep_prev)
+
+		{
+
+			str[i] = cap_char(str[i]);
+
+			sep_prev = 0;
+
+		}
+
 	}
-	return (s);
+
+	/* capitalize the first character if string is non-empty */
+
+	if (i > 0)
+
+		str[0] = cap_char(str[0]);
+
+	return (str);
 
 }
+/**
+ * is_sep - checks whether a given character is a separator
+ * @c: character to be checked
+ * Description:
+ * Separators are: space, tabulation, new line,
+ * ,, ;, ., !, ?, ", (, ), {, and }
+ */
 
+int is_sep(char c)
+
+{
+
+	char seps[] = {' ', '\t', '\n', ',', ';', '.', '!', '?', '\"', '(', ')',
+
+		'{', '}'};
+
+	int n = sizeof(seps) / sizeof(seps[0]);
+
+	int i;
+
+	for (i = 0; i < n; i++)
+
+	{
+
+		if (c == seps[i])
+
+			return (1);
+
+	}
+
+	return (0);
+
+}
+/**
+ * cap_char - gets the uppercase value of a character
+ * @c: character whose uppercase value to find
+ * Return: the uppercase value of c if c is in lowercase. Otherwise c
+ */
+char cap_char(char c)
+
+{
+
+	if (c >= 'a' && c <= 'z')
+
+		return (c - 32);
+
+	return (c);
+
+}
